@@ -109,5 +109,6 @@ jobs:
       - name: Print the JSON event from GHA output and file
         run: |
           printf ${{ steps.get-keptn-event.outputs.event }}
-          cat response.json
+          sudo apt-get install jq -y
+          jq '.type' response.json
 ```
