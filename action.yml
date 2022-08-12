@@ -36,6 +36,14 @@ inputs:
     description: "Delay between efforts (seconds)."
     required: true
     default: "5"
+  dump-json:
+    description: "Dump JSON response to the file or not."
+    required: false
+    default: false
+  path-dump-json:
+    description: "Path where store dump file."
+    required: false
+    default: "response.json"
 branding:
   icon: "terminal"
   color: "purple"

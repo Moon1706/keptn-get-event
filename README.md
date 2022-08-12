@@ -21,6 +21,8 @@ So, please, be careful.
 | await-time | yes | number | `0` | Time delay (seconds) before start main script. |
 | count-effort | yes | number | `5` | Count of effort to get event. |
 | delay-time | yes | number | `5` | Delay between efforts (seconds). |
+| dump-json | no | bool | `false` | Dump JSON response to the file or not. |
+| path-dump-json | no | path | `response.json` | Path where store dump file. |
 
 ## Outputs
 
@@ -58,6 +60,8 @@ Basic action with Kubernetes connection:
     await-time: 10
     count-effort: 3
     delay-time: 60
+    dump-json: true
+    path-dump-json: resp.json
 ```
 
 Basic flow with Kubernetes connection:
@@ -101,6 +105,9 @@ jobs:
           await-time: 10
           count-effort: 3
           delay-time: 60
-      - name: Print the event JSON
-        run: echo "The event: ${{ steps.get-keptn-event.outputs.event }}"
+          dump-json: true
+      - name: Print the JSON event from GHA output and file
+        run: |
+          printf ${{ steps.get-keptn-event.outputs.event }}
+          cat response.json
 ```
