@@ -102,5 +102,5 @@ jobs:
           count-effort: 3
           delay-time: 60
       - name: Print the event JSON
-        run: echo "The event: ${{ steps.get-keptn-event.outputs.event }}"
+        run: printf ${{ steps.get-keptn-event.outputs.event }}
 ```
