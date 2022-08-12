@@ -1,0 +1,44 @@
+name: "Get event from Keptn in cluster"
+description: "Get event from Keptn in a GitHub Actions build environment"
+author: "Moon1706"
+inputs:
+  keptn-api-url:
+    description: "URL pointing to the Keptn server."
+    required: true
+    default: ""
+  keptn-api-token:
+    description: "API Token to be used for getting the event."
+    required: true
+    default: ""
+  keptn-context:
+    description: "Keptn context of MongoDB event."
+    required: true
+  keptn-type-event:
+    description: "Type event which is searching in MongoDB."
+    required: true
+  get-from-kube:
+    description: "Get URL and token from Kubernetes with port forwarding."
+    required: true
+    default: false
+  kube-settings:
+    description: "Basic Kubernetes connection settings."
+    required: false
+    default: "{'namespace': 'keptn', 'secret': 'keptn-api-token', 'service': 'api-gateway-nginx'}"
+  await-time:
+    description: "Time delay (seconds) before start main script."
+    required: true
+    default: "0"
+  count-effort:
+    description: "Count of effort to get event."
+    required: true
+    default: "5"
+  delay-time:
+    description: "Delay between efforts (seconds)."
+    required: true
+    default: "5"
+branding:
+  icon: "terminal"
+  color: "purple"
+runs:
+  using: "node16"
+  main: "dist/index.js"
